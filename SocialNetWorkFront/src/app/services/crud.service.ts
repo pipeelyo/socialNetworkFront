@@ -43,8 +43,8 @@ export class CrudService {
         return this.http.get('http://localhost:3000/api/v1/user/' + id);
     }
 
-    getUserByName(name: string): Observable<any> {
-        return this.http.get('http://localhost:3000/api/v1/user/name/' + name); 
+    async getUserByName(name: string): Promise<Observable<any>> {
+        return this.http.get('http://localhost:3000/api/v1/user/name/' + name);
     }
 
     createUser(data: User): Observable<any> {

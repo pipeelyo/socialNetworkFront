@@ -13,8 +13,4 @@ import {SideBarComponent} from "./components/sideBar/sideBar.component";
   styleUrl: './app.component.scss',
   providers: [CrudService],
 })
-export class AppComponent {
-
-
-
-}
+export class AppComponent {}

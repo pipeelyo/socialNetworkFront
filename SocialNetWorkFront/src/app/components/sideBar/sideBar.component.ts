@@ -10,7 +10,29 @@ import { Router } from '@angular/router';
 })
 
 export class SideBarComponent implements OnInit {
-  ngOnInit(): void {
-    console.log(localStorage.getItem('login'))
+
+  user: User | undefined; 
+  constructor(private router: Router) {
   }
+
+  ngOnInit(): void {
+    const local = localStorage.getItem('login');
+    if(local !== null){
+      this.user = JSON.parse(local);
+    }
+  }
+
+  logOut = () => {
+    localStorage.removeItem('login');
+    this.router.navigate(['/login']);
+  }
+  navigateToLogin = () => {
+    this.router.navigate(['/login']);
+  }
+  navigateToRegister = () => {
+    this.router.navigate(['/register']);
+  }
+  navigateToPost = () => {
+    this.router.navigate(['/post']);
+  } 
 }

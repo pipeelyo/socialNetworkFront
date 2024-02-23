@@ -1,6 +1,7 @@
 import { Post } from "./post.interface";
 
 export interface User {
+    id?: number;
     full_name: string;
     age: number;
     email: string;

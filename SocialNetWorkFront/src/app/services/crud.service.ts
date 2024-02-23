@@ -1,6 +1,8 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Post } from "../interfaces/post.interface";
+import { User } from "../interfaces/user.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -21,11 +23,11 @@ export class CrudService {
         return this.http.get('http://localhost:3000/api/v1/post/user/' + idUser);
     }
 
-    createPost(data: any): Observable<any> {
+    createPost(data: Post): Observable<any> {
         return this.http.post('http://localhost:3000/api/v1/post', data);
     }
 
-    editPost(id: number, data: any): Observable<any> {
+    editPost(id: number, data: Post): Observable<any> {
         return this.http.put('http://localhost:3000/api/v1/post/' + id, data);
     }
 
@@ -45,11 +47,11 @@ export class CrudService {
         return this.http.get('http://localhost:3000/api/v1/user/name/' + name); 
     }
 
-    createUser(data: any): Observable<any> {
+    createUser(data: User): Observable<any> {
         return this.http.post('http://localhost:3000/api/v1/user', data);
     }
 
-    editUser(id: number, data: any): Observable<any> {
+    editUser(id: number, data: User): Observable<any> {
         return this.http.put('http://localhost:3000/api/v1/user/' + id, data);
     }
 

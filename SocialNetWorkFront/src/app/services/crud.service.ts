@@ -23,7 +23,7 @@ export class CrudService {
         return this.http.get('http://localhost:3000/api/v1/post/user/' + idUser);
     }
 
-    createPost(data: Post): Observable<any> {
+    async createPost(data: Post): Promise<Observable<any>> {
         return this.http.post('http://localhost:3000/api/v1/post', data);
     }
 

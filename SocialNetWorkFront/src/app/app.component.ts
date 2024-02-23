@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CrudService } from './services/crud.service';
 import { CommonModule } from '@angular/common';
+import { User } from './interfaces/user.interface';
 
 
 @Component({
@@ -12,4 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss',
   providers: [CrudService],
 })
-export class AppComponent {}
+export class AppComponent {
+
+
+
+}

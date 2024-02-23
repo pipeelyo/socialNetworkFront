@@ -21,12 +21,6 @@ export class LoginComponent implements OnInit {
     await this.login(name, password)
   }
 
-  getUser = (name: string) => {
-    // this.crudService.getUserByName(name).subscribe((data) => {
-    // this.dataLogin = data;
-    // });
-  }
-
   login = async (name: string, password: string) => {
     const response = await this.crudService.getUserByName(name);
     response.subscribe((data: User[]) => {

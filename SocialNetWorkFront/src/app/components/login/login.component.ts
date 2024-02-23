@@ -9,26 +9,39 @@ import { timeout } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   constructor(private crudService: CrudService) { }
+  dataLogin: any;
   ngOnInit(): void {
     
   }
   onSubmit = () => {
-    let response
-    const name = <HTMLInputElement> document.getElementById('fullName');
-    console.log('a ver', name.value);
-    ( async () => {
-       response = this.getUser(name.value);
-    })
-    ();
+    const name = this.getNameAndPassword()[0];
+    const password = this.getNameAndPassword()[1];
+    this.getUser(name);
+    this.login(name, password)
    
-    console.log('res', response);
+   
     
   }
 
   getUser = (name:string) => {
     this.crudService.getUserByName(name).subscribe((data) => {
-      return data;
+      this.dataLogin = data;
     });
+  }
+
+  login = (name: string, password: string) => {
+    console.log('res', this.dataLogin);
+    if(name === this.dataLogin[0].full_name && password === this.dataLogin[0].password){
+      console.log('entre al if');
+      
+      localStorage.setItem("login", 'true');
+    }
+  }
+
+  getNameAndPassword = () => {
+    const name = <HTMLInputElement> document.getElementById('fullName');
+    const password = <HTMLInputElement> document.getElementById('password');
+    return [name.value, password.value];
   }
 
 }

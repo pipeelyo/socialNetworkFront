@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../services/crud.service';
 import { FormControl } from '@angular/forms';
 import { timeout } from 'rxjs';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-form',
@@ -9,7 +10,7 @@ import { timeout } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   constructor(private crudService: CrudService) { }
-  dataLogin: any;
+  dataLogin: User[] | undefined;
   ngOnInit(): void {
     
   }
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   login = (name: string, password: string) => {
     console.log('res', this.dataLogin);
-    if(name === this.dataLogin[0].full_name && password === this.dataLogin[0].password){
+    if(name === this.dataLogin?.[0]?.full_name && password === this.dataLogin[0]?.password){
       console.log('entre al if');
       
       localStorage.setItem("login", 'true');

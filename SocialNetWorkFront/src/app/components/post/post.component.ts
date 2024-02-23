@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CrudService } from '../../services/crud.service';
+import { Post } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-form',
@@ -20,8 +21,8 @@ export class PostComponent implements OnInit {
     this.crudService.getAllPost().subscribe(data => this.items$ = data);
   }
 
-  onSubmit = async (id:number) => {
-    await this.crudService.createPost(id);
+  onSubmit = async (post:Post) => {
+    await this.crudService.createPost(post);
   }
 
 }

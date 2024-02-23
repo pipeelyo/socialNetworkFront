@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {CrudService} from '../../services/crud.service';
 import {User} from '../../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  constructor(private crudService: CrudService) {
+  constructor(private crudService: CrudService, private router: Router) {
   }
 
   dataLogin: User | undefined;
@@ -22,10 +23,11 @@ export class LoginComponent implements OnInit {
   }
 
   login = async (name: string, password: string) => {
-    const response = await this.crudService.getUserByName(name);
+    const response = await this.crudService.getUserByEmail(name);
     response.subscribe((data: User[]) => {
-      if (name === data[0]?.full_name && password === data[0]?.password) {
+      if (name === data[0]?.email && password === data[0]?.password) {
         localStorage.setItem("login", JSON.stringify(data[0]));
+        this.router.navigate(['/post']);
       }
     });
   }

@@ -7,7 +7,7 @@ export interface User {
     email: string;
     password: string;
     posts?: Post[]; // Array of Post objects associated with this user
-    createdAt: Date;
+    createdAt?: Date;
     updatedAt?: Date | null;
     deletedAt?: Date | null;
 }

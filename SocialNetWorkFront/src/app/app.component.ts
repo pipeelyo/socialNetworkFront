@@ -10,6 +10,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [CrudService]
+  providers: [CrudService],
 })
 export class AppComponent {}
